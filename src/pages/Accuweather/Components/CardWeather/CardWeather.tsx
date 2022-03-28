@@ -1,32 +1,35 @@
 import { useCallback } from 'react';
-import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { Card, CardContent, Grid, Typography } from '@mui/material';
 import { DataAccuweather } from 'src/redux/accuweather/accuweatherSlice.types';
 import dayjs from 'dayjs';
-import { iconStrategy } from './constants';
+import { DATE_FORMAT, iconStrategy } from './constants';
+import WeatherIcon from './Components/WeatherIcon';
 
-const CardWeather = ({ Date, Temperature, Day }: DataAccuweather) => {
+const CardWeather = ({ Date, Temperature, Day, Night }: DataAccuweather) => {
   const changeToCelsius = useCallback((value: number) => Math.round(((value - 32) * 5) / 9), []);
 
   return (
-    <Grid item xs={3} padding='10px'>
+    <Grid item xs={8} padding='10px'>
       <Card raised>
-        <CardMedia
-          component='img'
-          height='140'
-          image={iconStrategy[`${Day.Icon}`]}
-          alt='weather icon'
-        />
         <CardContent>
-          <Typography gutterBottom variant='h6' component='div'>
-            {dayjs(Date).format('YYYY-MM-DD')}
-          </Typography>
-          <Grid container direction='row' justifyContent='space-between'>
-            <Typography gutterBottom variant='body2' component='div'>
-              Max. {changeToCelsius(Temperature.Maximum.Value)} ºC
-            </Typography>
-            <Typography gutterBottom variant='body2' component='div'>
-              Min. {changeToCelsius(Temperature.Minimum.Value)} ºC
-            </Typography>
+          <Grid container direction='row'>
+            <Grid container item xs={4} direction='column'>
+              <Typography gutterBottom variant='h6' component='div'>
+                {dayjs(Date).format(DATE_FORMAT)}
+              </Typography>
+              <Typography gutterBottom variant='body2' component='div'>
+                Max. {changeToCelsius(Temperature.Maximum.Value)} ºC
+              </Typography>
+              <Typography gutterBottom variant='body2' component='div'>
+                Min. {changeToCelsius(Temperature.Minimum.Value)} ºC
+              </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <WeatherIcon title='Day' image={iconStrategy[`${Day.Icon}`]} />
+            </Grid>
+            <Grid item xs={4}>
+              <WeatherIcon title='Night' image={iconStrategy[`${Night.Icon}`]} />
+            </Grid>
           </Grid>
         </CardContent>
       </Card>

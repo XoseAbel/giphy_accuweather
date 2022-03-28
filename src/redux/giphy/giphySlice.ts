@@ -6,8 +6,8 @@ const initialState: GiphySlice = {
   loading: false,
   error: null,
   pagination: {
-    totalCount: 0,
-    limit: 50,
+    total_count: 0,
+    count: 50,
     offset: 0,
   },
   search: '',
@@ -25,6 +25,12 @@ export const giphySlice = createSlice({
     resetError: (state) => {
       state.error = null;
     },
+    resetList: (state) => {
+      state.data = [];
+    },
+    updateOffset: (state, action) => {
+      state.pagination.offset = action.payload;
+    },
     addToFavourite: (state, action) => {
       state.favouriteList = [...state.favouriteList, action.payload];
     },
@@ -39,7 +45,7 @@ export const giphySlice = createSlice({
     builder.addCase(getGiphy.fulfilled, (state, { payload }) => {
       state.loading = false;
       state.error = null;
-      state.data = payload.data;
+      state.data = [...state.data, ...payload.data];
       state.pagination = payload.pagination;
     });
     builder.addCase(getGiphy.rejected, (state, { payload }) => {
@@ -50,6 +56,13 @@ export const giphySlice = createSlice({
   },
 });
 
-export const { updateInput, resetError, addToFavourite, removeToFavourite } = giphySlice.actions;
+export const {
+  updateInput,
+  resetError,
+  addToFavourite,
+  removeToFavourite,
+  updateOffset,
+  resetList,
+} = giphySlice.actions;
 
 export default giphySlice.reducer;

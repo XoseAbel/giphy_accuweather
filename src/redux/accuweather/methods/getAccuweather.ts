@@ -15,8 +15,12 @@ export const getAccuweather = createAsyncThunk<
     const { id, language } = state.accuweather;
     const { REACT_APP_ACCUWEATHER_API_KEY } = process.env;
     const url = `${ACCUWEATHER_BASE_URL}${id}${API_KEY_PARAM_ACCUWEATHER}${REACT_APP_ACCUWEATHER_API_KEY}`;
-    const { DailyForecasts } = await connectWithApi(url, GET, { language });
+    const {
+      DailyForecasts,
+      Headline: { Text },
+    } = await connectWithApi(url, GET, { language });
     return {
+      headline: Text,
       data: DailyForecasts.map(({ Date, Day, Temperature, Night }: DataAccuweather) => ({
         Date,
         Day,

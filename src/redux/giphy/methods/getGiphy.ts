@@ -13,10 +13,10 @@ export const getGiphy = createAsyncThunk<
   try {
     const { REACT_APP_GIPHY_API_KEY } = process.env;
     const state = getState() as RootState;
-    const { limit, offset } = state.giphy.pagination;
+    const { count, offset } = state.giphy.pagination;
     const q = state.giphy.search;
     const { data, pagination } = await connectWithApi(GIPHY_SEARCH + REACT_APP_GIPHY_API_KEY, GET, {
-      limit,
+      count,
       offset,
       q,
     });

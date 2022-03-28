@@ -4,6 +4,7 @@ export interface AccuweatherSlice {
   id: string;
   selectedCity: string;
   language: string;
+  headline: string;
   data: DataAccuweather[];
   favouriteList: string[];
 }

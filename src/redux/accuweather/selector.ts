@@ -6,3 +6,4 @@ export const selectAccuweatherNameCity = (mainState: RootState) =>
   mainState.accuweather.selectedCity;
 
 export const selectAccuweatherData = (mainState: RootState) => mainState.accuweather.data;
+export const selectAccuweatherHeadline = (mainState: RootState) => mainState.accuweather.headline;

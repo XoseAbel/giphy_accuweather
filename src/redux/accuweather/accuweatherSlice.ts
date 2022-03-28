@@ -8,6 +8,7 @@ const initialState: AccuweatherSlice = {
   language: 'es-es',
   id: '',
   selectedCity: '',
+  headline: '',
   data: [],
   favouriteList: [],
 };
@@ -38,6 +39,7 @@ export const accuweatherSlice = createSlice({
       state.loading = false;
       state.error = null;
       state.data = payload.data;
+      state.headline = payload.headline;
     });
     builder.addCase(getAccuweather.rejected, (state, { payload }) => {
       state.loading = false;

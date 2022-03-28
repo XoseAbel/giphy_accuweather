@@ -1,9 +1,9 @@
 import { Grid } from '@mui/material';
-import ButtonSearch from 'src/Components/ButtonSearch';
+import ButtonSearch from 'src/pages/Giphy/Components/ButtonSearch';
 import GoHomeButton from 'src/Components/GoHomeButton';
 import InputRedux from 'src/pages/Giphy/Components/InputRedux';
 import SnackbarError from 'src/Components/SnackbarError';
-import { resetError, updateInput } from 'src/redux/giphy/giphySlice';
+import { resetError, resetList, updateInput } from 'src/redux/giphy/giphySlice';
 import { getGiphy } from 'src/redux/giphy/methods/getGiphy';
 import { selectGiphyError, selectGiphySearchValue } from 'src/redux/giphy/selector';
 import ImageGrid from './Components/ImageGrid';
@@ -17,10 +17,18 @@ const Giphy = () => {
           <GoHomeButton />
         </Grid>
         <Grid item xs={9}>
-          <InputRedux selector={selectGiphySearchValue} action={updateInput} />
+          <InputRedux
+            selector={selectGiphySearchValue}
+            action={updateInput}
+            actionsSearch={[resetList, getGiphy]}
+          />
         </Grid>
         <Grid item xs={2} container alignContent='center' justifyContent='center'>
-          <ButtonSearch action={getGiphy} title='Buscar Gifs' checkValue={selectGiphySearchValue} />
+          <ButtonSearch
+            actions={[resetList, getGiphy]}
+            title='Buscar Gifs'
+            checkValue={selectGiphySearchValue}
+          />
         </Grid>
       </Grid>
       <ImageGrid />

@@ -1,7 +1,7 @@
 export interface GiphySlice {
   loading: boolean;
   error: string | null;
-  pagination: pagination;
+  pagination: Pagination;
   search: string;
   data: DataGiphy[];
   favouriteList: string[];
@@ -22,8 +22,8 @@ export interface DataGiphy {
   };
 }
 
-type pagination = {
-  totalCount: number;
-  limit: number;
+export type Pagination = {
+  total_count: number;
+  count: number;
   offset: number;
 };

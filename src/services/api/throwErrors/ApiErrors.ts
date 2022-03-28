@@ -21,6 +21,7 @@ class ApiError {
     406: 'Los valores enviados no son aceptables',
     409: 'Conflicto con el estado actual del servidor',
     500: 'Error interno, intentalo de nuevo',
+    503: 'Excedido el número de peticiones',
   };
 }
 

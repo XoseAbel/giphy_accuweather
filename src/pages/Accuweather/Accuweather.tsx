@@ -7,6 +7,7 @@ import { resetError } from 'src/redux/accuweather/accuweatherSlice';
 import {
   selectAccuweatherData,
   selectAccuweatherError,
+  selectAccuweatherHeadline,
   selectAccuweatherNameCity,
 } from 'src/redux/accuweather/selector';
 import CardWeather from './Components/CardWeather';
@@ -15,6 +16,7 @@ import SearchAutocomplete from './Components/SearchAutocomplete';
 const Accuweather = () => {
   const listWeather = useSelector(selectAccuweatherData);
   const city = useSelector(selectAccuweatherNameCity);
+  const headline = useSelector(selectAccuweatherHeadline);
 
   return (
     <Grid container direction='column' padding='10px'>
@@ -29,14 +31,19 @@ const Accuweather = () => {
       </Grid>
       <Grid container paddingTop='5px'>
         {listWeather.length ? (
-          <>
-            <Typography variant='h5'>{city}</Typography>
-            <Grid container>
+          <Grid container direction='column'>
+            <Typography variant='h5' align='center'>
+              {city}
+            </Typography>
+            <Typography variant='h6' align='center'>
+              Destacado: {headline}
+            </Typography>
+            <Grid container justifyContent='center'>
               {listWeather.map((data) => (
                 <CardWeather key={data.Date} {...data} />
               ))}
             </Grid>
-          </>
+          </Grid>
         ) : (
           <NoResult />
         )}

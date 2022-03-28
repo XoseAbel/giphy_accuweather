@@ -13,7 +13,7 @@ const GoHomeButton = () => {
   return (
     <Tooltip title='Ir a home'>
       <span onClick={handleNavigate} style={{ cursor: 'pointer' }}>
-        <FaHome />
+        <FaHome data-testid='goHome' />
       </span>
     </Tooltip>
   );

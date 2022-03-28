@@ -20,6 +20,19 @@ import ico24 from 'src/assets/weatherIcons/24-s.png';
 import ico25 from 'src/assets/weatherIcons/25-s.png';
 import ico26 from 'src/assets/weatherIcons/26-s.png';
 import ico29 from 'src/assets/weatherIcons/29-s.png';
+import ico32 from 'src/assets/weatherIcons/32-s.png';
+import ico33 from 'src/assets/weatherIcons/33-s.png';
+import ico34 from 'src/assets/weatherIcons/34-s.png';
+import ico35 from 'src/assets/weatherIcons/35-s.png';
+import ico36 from 'src/assets/weatherIcons/36-s.png';
+import ico37 from 'src/assets/weatherIcons/37-s.png';
+import ico38 from 'src/assets/weatherIcons/38-s.png';
+import ico39 from 'src/assets/weatherIcons/39-s.png';
+import ico40 from 'src/assets/weatherIcons/40-s.png';
+import ico41 from 'src/assets/weatherIcons/41-s.png';
+import ico42 from 'src/assets/weatherIcons/42-s.png';
+import ico43 from 'src/assets/weatherIcons/43-s.png';
+import ico44 from 'src/assets/weatherIcons/44-s.png';
 
 export const iconStrategy: { [key: string]: string } = {
   '1': icon1,
@@ -44,4 +57,19 @@ export const iconStrategy: { [key: string]: string } = {
   '25': ico25,
   '26': ico26,
   '29': ico29,
+  '32': ico32,
+  '33': ico33,
+  '34': ico34,
+  '35': ico35,
+  '36': ico36,
+  '37': ico37,
+  '38': ico38,
+  '39': ico39,
+  '40': ico40,
+  '41': ico41,
+  '42': ico42,
+  '43': ico43,
+  '44': ico44,
 };
+
+export const DATE_FORMAT = 'ddd DD, MMMM';
